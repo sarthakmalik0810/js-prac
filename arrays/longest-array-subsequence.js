@@ -69,13 +69,13 @@ class Solution {
         
         for (let i = 0; i < N; i++) {
             if(!set.has(arr[i]-1)) {
-                let j = arr[i];
+                let firstElement = arr[i];
                 
-                while(set.has(j)) {
-                    j++;
+                while(set.has(firstElement)) {
+                    firstElement++;
                 }
                 
-                if(count < j - arr[i]) count = j-arr[i]
+                if(count < firstElement - arr[i]) count = firstElement-arr[i]
             }
         }
         return count;
