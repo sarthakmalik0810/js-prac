@@ -37,7 +37,7 @@ const ansArr = mapArr.myMap(function (item, index) {
 
 console.log(ansArr);
 
-/** Array.prototype.filter */
+// /** Array.prototype.filter */
 
 if (!Array.prototype.myFilter) {
   Array.prototype.myFilter = function (callback /**thisArg */) {
@@ -104,3 +104,133 @@ forEachArray.myForEach((ele, idx) => {
 });
 
 console.log(ansForeach);
+
+/** Array.prototype.reduce */
+
+if (!Array.prototype.myReduce) {
+  Array.prototype.myReduce = function (callback, initialValue) {
+    let accumulator;
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    let array = this;
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
+    var i;
+    if (arguments.length > 1) {
+      accumulator = arguments[1];
+      i = 0;
+    } else {
+      accumulator = array[0];
+      i = 1;
+    }
+    for (; i < array.length; i++) {
+      accumulator = callback.call(null, accumulator, array[i], i, array);
+    }
+    return accumulator;
+  };
+}
+
+const logicAlbums = [
+  'Bobby Tarantino',
+  'The Incredible True Story',
+  'Supermarket',
+  'Under Pressure',
+];
+
+const combineAlbums = logicAlbums.myReduce(function(a, b) {
+  return a + ' , ' + b
+}, 'Young Sinatra') // Initial Value is Young Sinatra
+
+console.log(combineAlbums);
+
+/** Array.prototype.flat */
+
+if (!Array.prototype.myFlat) {
+  Array.prototype.myFlat = function (depth = 1) {
+    const result = [];
+    const arr = this;
+    for (let item of arr) {
+      if (Array.isArray(item) && depth > 0) {
+        result.push(...item.myFlat(depth - 1));
+      } else {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+}
+
+if (!Array.prototype.myFlatWithReduce) {
+  Array.prototype.myFlatWithReduce = function (depth = 1) {
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    if(typeof depth !== 'number') {
+      throw new TypeError(depth + 'is not a number')
+    }
+    depth = parseInt(depth); // convert decimals to whole number
+    const arr = this;
+    return arr.reduce((acc, ele) => {
+      if (Array.isArray(ele) && depth > 0) {
+        acc.push(...ele.myFlatWithReduce(depth - 1));
+      } else acc.push(ele);
+      return acc;
+    }, []);
+  };
+}
+
+const unflat = [1, [2], [3, [4, 5, 6]]];
+
+const ans = unflat.myFlatWithReduce(1);
+
+console.log(ans);
+
+//bind
+
+if (!Function.prototype.myBind) {
+  Function.prototype.myBind = function (context = {}, ...args) {
+    if (typeof this !== 'function') {
+      throw new TypeError('cannot bind to ' + this + 'as its not a function');
+    }
+    context.fn = this;
+    return function () {
+      context.fn(...args);
+    };
+  };
+}
+
+if (!Function.prototype.myApply) {
+  Function.prototype.myApply = function (context = {}, args = []) {
+    if (typeof this !== ' function') {
+      throw new TypeError('cannot apply to ' + this + 'as its not a function');
+    }
+    if (!Array.isArray(args)) {
+      throw new TypeError('CreateListFromArrayLike called on non-object');
+    }
+    context.fn = this;
+    context.fn(...args);
+  };
+}
+
+if (!Function.prototype.myCall) {
+  Function.prototype.myApply = function (context = {}, ...arg) {
+    if (typeof this !== ' function') {
+      throw new TypeError('cannot call ' + this + 'as its not a function');
+    }
+    context.fn = this;
+    context.fn(...args);
+  };
+}
+
+let name = {
+  first: 'sarthak',
+  last: 'malik',
+};
+
+let printName = function (first, last) {
+  console.log(this.first + ' ' + first + ' ' + this.last + ' ' + last);
+};
+
+let myBoundCall = printName.apply(name, ['abc', 'def']);
