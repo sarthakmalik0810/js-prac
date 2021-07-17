@@ -1,5 +1,5 @@
 var findKthLargest = function(nums, k) {
-  while(k > 0) {
-      let max = Math.max.call()
-  }
+    nums.sort((a,b) => a-b);
+    return nums[nums.length - k]
+    
 };
