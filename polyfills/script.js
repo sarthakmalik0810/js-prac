@@ -2,31 +2,31 @@
 
 // /** Array.prototype.map */
 
-// if (!Array.prototype.myMap) {
-//   Array.prototype.myMap = function (callback /**thisArg */) {
-//     let T;
-//     let array = this;
-//     let newArray = [];
-//     if (this === null) {
-//       throw new TypeError('this is null or undefined');
-//     }
+if (!Array.prototype.myMap) {
+  Array.prototype.myMap = function (callback /**thisArg */) {
+    let T;
+    let array = this;
+    let newArray = [];
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
 
-//     if (typeof callback !== 'function') {
-//       throw new TypeError(callback + 'is not a function');
-//     }
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
 
-//     if (arguments.length > 1) {
-//       T = arguments[1] || null;
-//     }
+    if (arguments.length > 1) {
+      T = arguments[1] || null;
+    }
 
-//     for (let i = 0; i < array.length; i++) {
-//       let newItem = callback.call(T, array[i], i, array);
-//       newArray.push(newItem);
-//     }
+    for (let i = 0; i < array.length; i++) {
+      let newItem = callback.call(T, array[i], i, array);
+      newArray.push(newItem);
+    }
 
-//     return newArray;
-//   };
-// }
+    return newArray;
+  };
+}
 
 // const mapArr = [10, 20, 30, 40];
 
@@ -39,30 +39,30 @@
 
 // // /** Array.prototype.filter */
 
-// if (!Array.prototype.myFilter) {
-//   Array.prototype.myFilter = function (callback /**thisArg */) {
-//     let T;
-//     let newArray = [];
-//     if (this === null) {
-//       throw new TypeError('this is null or undefined');
-//     }
-//     let array = this;
-//     if (typeof callback !== 'function') {
-//       throw new TypeError(callback + 'is not a function');
-//     }
-//     if (arguments.length > 0) {
-//       T = arguments[1] || null;
-//     }
+if (!Array.prototype.myFilter) {
+  Array.prototype.myFilter = function (callback /**thisArg */) {
+    let T;
+    let newArray = [];
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    let array = this;
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
+    if (arguments.length > 0) {
+      T = arguments[1] || null;
+    }
 
-//     for (let i = 0; i < array.length; i++) {
-//       let bool = callback.call(T, array[i], i, array);
-//       if (bool) {
-//         newArray.push(array[i]);
-//       }
-//     }
-//     return newArray;
-//   };
-// }
+    for (let i = 0; i < array.length; i++) {
+      let bool = callback.call(T, array[i], i, array);
+      if (bool) {
+        newArray.push(array[i]);
+      }
+    }
+    return newArray;
+  };
+}
 
 // const filterArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -75,25 +75,25 @@
 
 // /** Array.prototype.forEach */
 
-// if (!Array.prototype.myForEach) {
-//   Array.prototype.myForEach = function (callback, thisArg) {
-//     let T;
-//     if (this === null) {
-//       throw new TypeError('this is null or undefined');
-//     }
-//     let array = this;
-//     if (typeof callback !== 'function') {
-//       throw new TypeError(callback + 'is not a function');
-//     }
-//     if (arguments.length > 0) {
-//       T = arguments[1] || null;
-//     }
+if (!Array.prototype.myForEach) {
+  Array.prototype.myForEach = function (callback, thisArg) {
+    let T;
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    let array = this;
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
+    if (arguments.length > 0) {
+      T = arguments[1] || null;
+    }
 
-//     for (let i = 0; i < array.length; i++) {
-//       callback.call(T, array[i], i, array);
-//     }
-//   };
-// }
+    for (let i = 0; i < array.length; i++) {
+      callback.call(T, array[i], i, array);
+    }
+  };
+}
 
 // const forEachArray = [1, 2, 3, 4, 5, 6, 7];
 
@@ -107,30 +107,30 @@
 
 // /** Array.prototype.reduce */
 
-// if (!Array.prototype.myReduce) {
-//   Array.prototype.myReduce = function (callback, initialValue) {
-//     let accumulator;
-//     if (this === null) {
-//       throw new TypeError('this is null or undefined');
-//     }
-//     let array = this;
-//     if (typeof callback !== 'function') {
-//       throw new TypeError(callback + 'is not a function');
-//     }
-//     var i;
-//     if (arguments.length > 1) {
-//       accumulator = arguments[1];
-//       i = 0;
-//     } else {
-//       accumulator = array[0];
-//       i = 1;
-//     }
-//     for (; i < array.length; i++) {
-//       accumulator = callback.call(null, accumulator, array[i], i, array);
-//     }
-//     return accumulator;
-//   };
-// }
+if (!Array.prototype.myReduce) {
+  Array.prototype.myReduce = function (callback, initialValue) {
+    let accumulator;
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    let array = this;
+    if (typeof callback !== 'function') {
+      throw new TypeError(callback + 'is not a function');
+    }
+    var i;
+    if (arguments.length > 1) {
+      accumulator = arguments[1];
+      i = 0;
+    } else {
+      accumulator = array[0];
+      i = 1;
+    }
+    for (; i < array.length; i++) {
+      accumulator = callback.call(null, accumulator, array[i], i, array);
+    }
+    return accumulator;
+  };
+}
 
 // const logicAlbums = [
 //   'Bobby Tarantino',
@@ -147,39 +147,39 @@
 
 // /** Array.prototype.flat */
 
-// if (!Array.prototype.myFlat) {
-//   Array.prototype.myFlat = function (depth = 1) {
-//     const result = [];
-//     const arr = this;
-//     for (let item of arr) {
-//       if (Array.isArray(item) && depth > 0) {
-//         result.push(...item.myFlat(depth - 1));
-//       } else {
-//         result.push(item);
-//       }
-//     }
-//     return result;
-//   };
-// }
+if (!Array.prototype.myFlat) {
+  Array.prototype.myFlat = function (depth = 1) {
+    const result = [];
+    const arr = this;
+    for (let item of arr) {
+      if (Array.isArray(item) && depth > 0) {
+        result.push(...item.myFlat(depth - 1));
+      } else {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+}
 
-// if (!Array.prototype.myFlatWithReduce) {
-//   Array.prototype.myFlatWithReduce = function (depth = 1) {
-//     if (this === null) {
-//       throw new TypeError('this is null or undefined');
-//     }
-//     if (typeof depth !== 'number') {
-//       throw new TypeError(depth + 'is not a number');
-//     }
-//     depth = parseInt(depth); // convert decimals to whole number
-//     const arr = this;
-//     return arr.reduce((acc, ele) => {
-//       if (Array.isArray(ele) && depth > 0) {
-//         acc.push(...ele.myFlatWithReduce(depth - 1));
-//       } else acc.push(ele);
-//       return acc;
-//     }, []);
-//   };
-// }
+if (!Array.prototype.myFlatWithReduce) {
+  Array.prototype.myFlatWithReduce = function (depth = 1) {
+    if (this === null) {
+      throw new TypeError('this is null or undefined');
+    }
+    if (typeof depth !== 'number') {
+      throw new TypeError(depth + 'is not a number');
+    }
+    depth = parseInt(depth); // convert decimals to whole number
+    const arr = this;
+    return arr.reduce((acc, ele) => {
+      if (Array.isArray(ele) && depth > 0) {
+        acc.push(...ele.myFlatWithReduce(depth - 1));
+      } else acc.push(ele);
+      return acc;
+    }, []);
+  };
+}
 
 // const unflat = [1, [2], [3, [4, 5, 6]]];
 
@@ -189,40 +189,40 @@
 
 // //bind
 
-// if (!Function.prototype.myBind) {
-//   Function.prototype.myBind = function (context = {}, ...args) {
-//     if (typeof this !== 'function') {
-//       throw new TypeError('cannot bind to ' + this + 'as its not a function');
-//     }
-//     context.fn = this;
-//     return function () {
-//       context.fn(...args);
-//     };
-//   };
-// }
+if (!Function.prototype.myBind) {
+  Function.prototype.myBind = function (context = {}, ...args) {
+    if (typeof this !== 'function') {
+      throw new TypeError('cannot bind to ' + this + 'as its not a function');
+    }
+    context.fn = this;
+    return function () {
+      context.fn(...args);
+    };
+  };
+}
 
-// if (!Function.prototype.myApply) {
-//   Function.prototype.myApply = function (context = {}, args = []) {
-//     if (typeof this !== ' function') {
-//       throw new TypeError('cannot apply to ' + this + 'as its not a function');
-//     }
-//     if (!Array.isArray(args)) {
-//       throw new TypeError('CreateListFromArrayLike called on non-object');
-//     }
-//     context.fn = this;
-//     context.fn(...args);
-//   };
-// }
+if (!Function.prototype.myApply) {
+  Function.prototype.myApply = function (context = {}, args = []) {
+    if (typeof this !== ' function') {
+      throw new TypeError('cannot apply to ' + this + 'as its not a function');
+    }
+    if (!Array.isArray(args)) {
+      throw new TypeError('CreateListFromArrayLike called on non-object');
+    }
+    context.fn = this;
+    context.fn(...args);
+  };
+}
 
-// if (!Function.prototype.myCall) {
-//   Function.prototype.myApply = function (context = {}, ...arg) {
-//     if (typeof this !== ' function') {
-//       throw new TypeError('cannot call ' + this + 'as its not a function');
-//     }
-//     context.fn = this;
-//     context.fn(...args);
-//   };
-// }
+if (!Function.prototype.myCall) {
+  Function.prototype.myApply = function (context = {}, ...arg) {
+    if (typeof this !== ' function') {
+      throw new TypeError('cannot call ' + this + 'as its not a function');
+    }
+    context.fn = this;
+    context.fn(...args);
+  };
+}
 
 // let name = {
 //   first: 'sarthak',
