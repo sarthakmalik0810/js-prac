@@ -215,7 +215,7 @@ if (!Function.prototype.myApply) {
 }
 
 if (!Function.prototype.myCall) {
-  Function.prototype.myApply = function (context = {}, ...arg) {
+  Function.prototype.myCall = function (context = {}, ...arg) {
     if (typeof this !== ' function') {
       throw new TypeError('cannot call ' + this + 'as its not a function');
     }
