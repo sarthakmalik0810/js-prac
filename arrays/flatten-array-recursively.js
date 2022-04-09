@@ -4,7 +4,7 @@
 
 function flatten(arr) {
   let acc = [];
-  arr.forEach(ele => {
+  arr.forEach((ele) => {
     if (Array.isArray(ele)) {
       acc = acc.concat(flatten(ele));
     } else {
@@ -16,8 +16,21 @@ function flatten(arr) {
 
 const arr = [
   [1, 2],
-  [3, 4, [5, 6], []],
+  [3, 4, [5, 6, [7, [8]]]],
 ];
 
-const flattened = flatten(arr);
+function flattenWithLevel(arr, level = 1) {
+  let acc = [];
+  arr.forEach((ele) => {
+    if (Array.isArray(ele) && level > 0) {
+      acc = [...acc, ...flattenWithLevel(ele, level - 1)];
+    } else {
+      acc.push(ele);
+    }
+  });
+
+  return acc;
+}
+
+const flattened = flattenWithLevel(arr);
 console.log(flattened);
